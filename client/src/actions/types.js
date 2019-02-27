@@ -1,0 +1,12 @@
+export const AUTH_USER = 'auth_user';
+export const AUTH_ERROR = 'auth_error';
+export const FETCH_DATA = 'fetch_data';
+export const SELECT_QUESTION = 'select_question';
+export const DATA_FETCH_ERROR = 'data_fetch_error';
+export const VOTING_ERROR = 'voting_error';
+export const CLEAR_ERRORS = 'clear_messages';
+export const VOTING_SUCCESS = 'voting_success';
+export const ADD_QUESTION = 'add_question';
+export const FETCH_USER_DATA = 'fetch_user_data';
+export const CREATE_QUESTION_ERROR = 'create_question_error';
+export const DELETE_QUESTION = 'delete_question';

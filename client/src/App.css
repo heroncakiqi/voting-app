@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Ranga');
+
+html {
+  font-family: 'Ranga', cursive;
+  font-size: 1.5rem;
+  overflow-y: scroll;
+}
+* {
+  box-sizing: border-box;
+}
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.header a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: red;
+}
+
+.header a:active {
+  color: rebeccapurple;
+}
+
+.list-container {
+  box-sizing: border-box;
+  padding: 5px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.question-card {
+  border: red 2px solid;
+  transition:all .5s ease;
+  height: 55px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  margin-bottom: 30px;
+}
+
+.question-card:hover, button:hover{
+  box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+} 
+
+.question-card.active {
+  height: 300px;
+  box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+}
+
+fieldset {
+  display: flex;
+  border: black 2px solid;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.chart {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.select {
+  margin-top: 10px;
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dou {
+  flex: 3;
+}
+
+.chartjs-render-monitor {
+  margin: 0;
+}
+
+.voting-error {
+  margin-left: 40px;
+  color: red
+}
+
+.voting-success {
+  margin-left: 40px;
+  color: '#606060';
+}
+
+.create  {
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.close {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.option-info {
+  font-size: 0.7rem;
+  color: gray;
+}
+
+.delete-question {
+  position: relative;
+  background: none;
+  border: none;
+  top: -43.3px;
+  font-size: 0.7rem;
+  right: 10px;
+  float: right;
+  z-index: 1;
+}
+
+select,input {
+  font-size: .6rem;
+  border:solid 1px #41403E;
+  margin-right: 5px;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+button {
+  font-size: .6rem;
+  border:solid 1px #41403E;
+  background:transparent;
+  transition:all .5s ease;
+  color:#41403E;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.logout {
+  background:transparent;
+  border: none
+}
