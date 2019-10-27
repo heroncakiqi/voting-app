@@ -52,7 +52,7 @@ class Chart extends Component {
               {this.state.option === 'create' ? 
                 <input onChange={this.handleChange2} type="text" name="" id=""/>: 
               ''}
-              <button onClick={this.handleSubmit}>vote!</button>
+              <button onClick={this.handleSubmit}>vote! ✉️</button>
 
           </div>
           <div className="dou">

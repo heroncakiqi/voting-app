@@ -9,16 +9,16 @@ class Header extends Component {
     return (
       <div className='header'>
         <div className='a'>
-          <Link to='/'>Home</Link>
-          <Link to='/user'>My Polls</Link>
+          <Link to='/'>Home 🏠</Link>
+          <Link to='/user'>My Polls 📊</Link>
         </div>
           {!isAuth ?
             <div>
-              <Link to='/login'>Log In</Link>
-              <Link to='/signup'>Sign Up</Link>
+              <Link to='/login'>Log In 🔑</Link>
+              <Link to='/signup'>Sign Up 📋</Link>
             </div>
             : 
-            <Link to='logout'>Log out</Link>
+            <Link to='logout'>Log out 👋</Link>
           } 
       </div>
     )

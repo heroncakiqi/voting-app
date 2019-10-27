@@ -52,7 +52,7 @@ class CreateQuestion extends Component {
       <div>
         {!isAuth ? <h3>Log in or Sign Up to create a poll!</h3> : 
           <div>
-            <h3><span onClick={this.openModal} className='create'>Create a poll!</span></h3>
+            <h3><span onClick={this.openModal} className='create'>Create a poll! 📝</span></h3>
             <Modal
               isOpen={this.state.modalIsOpen}
               onAfterOpen={this.afterOpenModal}
@@ -60,7 +60,7 @@ class CreateQuestion extends Component {
               style={customStyles}
               contentLabel="Example Modal"
             >
-              <h2>Create New Poll</h2>
+              <h2>Create New Poll 📝</h2>
               <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
                 <label>
                   Poll:

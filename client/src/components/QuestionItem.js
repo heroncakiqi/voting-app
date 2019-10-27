@@ -25,7 +25,7 @@ class QuestionItem extends Component {
       <div  className={`question-card ${isActive ? 'active' : ''}`}>
         <div style={{padding: '10px', width: '95%'}} onClick={this.handleClick}>
           {text.includes('?') ? text : `${text}?`} 
-        </div>{isDelete && <button onClick={this.handleDeleteClick} className='delete-question'>&#x2715;</button>}
+        </div>{isDelete && <button onClick={this.handleDeleteClick} className='delete-question'>❌</button>}
           {isActive ? <Chart /> : ''}
       </div>
     )
