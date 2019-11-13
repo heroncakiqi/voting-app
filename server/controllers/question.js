@@ -30,7 +30,7 @@ exports.postQuestion = async (req, res) => {
     await question.save();
     const questions = await Question.find();
     // show the savet question with it options
-    res.status(200).json(questions);
+    res.status(200).json(question);
 }
 
 exports.getQuestions = async (req, res) => {
@@ -114,6 +114,6 @@ exports.deleteQuestion = async (req, res) => {
   const isQuestion = await Question.findOne({_id: req.params.questionId});
   if(!isQuestion) return res.status(400).json({error: 'item does not exist'});
   if(!isQuestion.author.equals(userId)) return res.status(400).json({error: 'you cannot do that!'});
-  await Question.findOneAndDelete({_id: req.params.questionId});
-  res.json({success: 'item deleted!'});
+  const question = await Question.findOneAndDelete({_id: req.params.questionId});
+  res.json(question);
 }
