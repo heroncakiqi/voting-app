@@ -25,6 +25,7 @@ class SignUp extends Component {
             name='email'
             type='text'
             component='input'
+            disabled={this.props.disabled}
           />
           <span> {this.props.errorMessage && this.props.errorMessage.email}</span>
           <label>Password:</label>
@@ -32,9 +33,10 @@ class SignUp extends Component {
             name='password'
             type='password'
             component='input'
+            disabled={this.props.disabled}
           />
           <span> {this.props.errorMessage && this.props.errorMessage.password}</span>
-          <button>Sign Up!</button>
+          <button disabled={this.props.disabled}>Sign Up!</button>
         </fieldset>
         </form>
       </div>
@@ -44,7 +46,8 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    errorMessage: state.auth.errorMessage
+    errorMessage: state.auth.errorMessage,
+    loading: state.loading.formLoading
   }
 }
 

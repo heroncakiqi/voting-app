@@ -6,6 +6,7 @@ import questions from './questions';
 import activeQuestion from './activeQuestion';
 import messages from './messages';
 import userQuestions from './userQuestions';
+import loading from './loading';
 
 export default combineReducers({
   auth,
@@ -13,5 +14,6 @@ export default combineReducers({
   questionsList: questions,
   activeQuestion,
   userQuestions,
-  messages
+  messages,
+  loading
 });

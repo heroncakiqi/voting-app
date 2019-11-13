@@ -10,3 +10,5 @@ export const ADD_QUESTION = 'add_question';
 export const FETCH_USER_DATA = 'fetch_user_data';
 export const CREATE_QUESTION_ERROR = 'create_question_error';
 export const DELETE_QUESTION = 'delete_question';
+export const TOOGLE_LOADING = 'toogle_loading';
+export const UPDATE_LIST = 'update_list';

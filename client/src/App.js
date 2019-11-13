@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import Header from './components/Header';
 import Welcome from './components/Welcome';
 import SignUp from './components/auth/SignUp';
-import UsersQuestions from './components/UsersQuestions';
 import LogOut from './components/auth/LogOut';
 import LogIn from './components/auth/LogIn';
 import store from './store';
+import requireAuth from './components/requireAuth';
 import './App.css';
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
           <Header />
           <Route path='/' exact component={Welcome} />
           <Route path='/signup' exact component={SignUp}/>
-          <Route path='/user' exact component={UsersQuestions}/>
+          <Route path='/user' exact component={requireAuth(Welcome)}/>
           <Route path='/logout' exact component={LogOut}/>
           <Route path='/login' exact component={LogIn}/>
         </div>

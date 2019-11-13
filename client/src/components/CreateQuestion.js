@@ -46,8 +46,7 @@ class CreateQuestion extends Component {
   }
 
   render() {
-    const { isAuth, errors } = this.props;
-    console.log(errors);
+    const { isAuth, errors, loading } = this.props;
     return (
       <div>
         {!isAuth ? <h3>Log in or Sign Up to create a poll!</h3> : 
@@ -70,6 +69,7 @@ class CreateQuestion extends Component {
                   type='text'
                   component='input'
                   required
+                  disabled={loading}
                 />
                 <br/>
                 <label>
@@ -80,13 +80,14 @@ class CreateQuestion extends Component {
                   type='text'
                   component='input'
                   required
+                  disabled={loading}
                 />
                 <span className="option-info">min 2 options, seperate option by line "-"</span>
                 {errors ? <span>{errors}</span> : ''}
                 <br/>
-                <button>submit</button>
+                <button disabled={loading} >submit</button>
               </form>
-              <button className='close' onClick={this.closeModal}>&#10006;</button>
+              <button className='close' disabled={loading} onClick={this.closeModal}>&#10006;</button>
             </Modal>
           </div>
         }
@@ -99,7 +100,8 @@ class CreateQuestion extends Component {
 const mapStateToProps = state => {
   return {
     isAuth: !!state.auth.authenticated,
-    errors: state.messages.createError
+    errors: state.messages.createError,
+    loading: state.loading.addingQuestionLoading,
   }
 }
 

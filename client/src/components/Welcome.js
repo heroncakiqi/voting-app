@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 import { fetchData } from '../actions/questionActions';
 import QuestionList from './QuestionsList';
@@ -10,15 +11,19 @@ import CreateQuestion from './CreateQuestion';
 class Welcome extends Component {
 
   componentDidMount(){
-    this.props.fetchData();
+    const authToken = this.props.match.path === '/user' ? this.props.auth.authenticated : '';
+    this.props.fetchData(authToken);
   }
   
   render() {
-    const { data } = this.props;
+    const { data, loading } = this.props;
+    const isDelete = this.props.match.path === '/user';
     return (
       <div className="list-container">
         <CreateQuestion />
-        <QuestionList data={data} />
+        {loading ? <div id="loader"><Loader type="Plane"/></div> : 
+          <QuestionList isDelete={isDelete} data={data} />
+        }
       </div>
     )
   }
@@ -26,8 +31,10 @@ class Welcome extends Component {
 
 const mapStateToProps = state => {
   return {
+    auth: state.auth,
     data: state.questionsList,
-    error: state.messages.loadingError
+    error: state.messages.loadingError,
+    loading: state.loading.questionsLoading
   }
 }
 

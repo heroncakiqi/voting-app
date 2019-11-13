@@ -21,6 +21,7 @@ class LogIn extends Component {
             type='text'
             component='input'
             required
+            disabled={this.props.disabled}
           />
           <span>{this.props.errorMessage && this.props.errorMessage.email}</span>
           <label>Password:</label>
@@ -29,9 +30,10 @@ class LogIn extends Component {
             type='password'
             component='input'
             required
+            disabled={this.props.disabled}
           />
           <span>{this.props.errorMessage && this.props.errorMessage.password}</span>
-          <button>Log In!</button>
+          <button disabled={this.props.disabled}>Log In!</button>
         </fieldset>
         </form>
       </div>
@@ -41,7 +43,8 @@ class LogIn extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    errorMessage: state.auth.errorMessage
+    errorMessage: state.auth.errorMessage,
+    loading: state.loading.formLoading
   }
 }
 

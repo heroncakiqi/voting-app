@@ -4,14 +4,15 @@ import {
   CLEAR_ERRORS,
   SELECT_QUESTION, 
   VOTING_SUCCESS,
-  CREATE_QUESTION_ERROR
+  CREATE_QUESTION_ERROR,
+  TOOGLE_LOADING
 } from '../actions/types';
 
 const INITIAL_STATE = {
   loadingError: '',
   votingError: '',
   votingSuccess: '',
-  createError: ''
+  createError: '',
 }
 
 export default (state = INITIAL_STATE, action) => {

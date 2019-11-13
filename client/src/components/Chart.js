@@ -35,14 +35,14 @@ class Chart extends Component {
   }
 
   render() {
-    const { poll } = this.props;
+    const { poll, loading } = this.props;
     const labels = poll.options.map(item => item.text);
     const data = poll.options.map(item => item.count);
     return (
       <div className="chart">
         <div style={{display: 'flex'}}>
           <div className='select'>
-              <select value={this.state.option} name='select' onChange={this.handleChange}>
+              <select disabled={loading} value={this.state.option} name='select' onChange={this.handleChange}>
                 <option value="option">select an option</option>
                 {poll.options.map((item,index) => {
                   return <option key={index} value={item._id}>{item.text}</option>
@@ -52,7 +52,7 @@ class Chart extends Component {
               {this.state.option === 'create' ? 
                 <input onChange={this.handleChange2} type="text" name="" id=""/>: 
               ''}
-              <button onClick={this.handleSubmit}>vote! ✉️</button>
+              <button disabled={loading} onClick={this.handleSubmit}>vote! ✉️</button>
 
           </div>
           <div className="dou">
@@ -73,7 +73,8 @@ class Chart extends Component {
           </div>
         </div>
         <span className='voting-error'>{this.props.error && `${this.props.error}!`}</span>
-        <span className='voting-success'>{this.props.success && `${this.props.success}`} {}</span>
+        <span className='voting-success'>{this.props.success && `${this.props.success}`}</span>
+        <span className='voating-loading'>{this.props.loading && 'wate...'}</span>
       </div>
     )
   }
@@ -85,7 +86,8 @@ const mapStateToProps = state => {
   return {
     poll: state.activeQuestion,
     error: state.messages.votingError,
-    success: state.messages.votingSuccess
+    success: state.messages.votingSuccess,
+    loading: state.loading.voatingLoading
   }
 }
 
