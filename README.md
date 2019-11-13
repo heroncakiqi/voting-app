@@ -2,6 +2,8 @@
 
 A poll application build with React, Redux, Node.js, and mongoDB.
 
+live demo: https://client-jvrkupmeec.now.sh
+
 User Story: As an authenticated user, I can keep my polls and come back later to access them.
 
 User Story: As an authenticated user, I can share my polls with my friends.
