@@ -165,9 +165,14 @@ export const createOption = (option, questionId) => async dispatch => {
  dispatch(vote(questionId,data._id));
 
   } catch(err) {
+    dispatch({
+      type: TOOGLE_LOADING,
+      payload: { voatingLoading: false }
+    })
+    const errText = err.response.data == "Unauthorized" ? {error: 'You must have an account to add options!'}: err.response.data
       dispatch({
         type: VOTING_ERROR,
-        payload: err.response.data
+        payload: errText
       });
   }
 }
