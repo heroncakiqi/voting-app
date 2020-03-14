@@ -6,12 +6,9 @@ import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
 
 import Header from './components/Header';
-import Welcome from './components/Welcome';
 import SignUp from './components/auth/SignUp';
-import LogOut from './components/auth/LogOut';
 import LogIn from './components/auth/LogIn';
 import store from './store';
-import requireAuth from './components/requireAuth';
 import './App.css';
 
 class App extends Component {
@@ -19,13 +16,13 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-        <div className="page">
-          <Header />
-          <Route path='/' exact component={HomePage} />
-          <Route path='/signup' exact component={SignUp}/>
-          <Route path='/user' exact component={UsersPage}/>
-          <Route path='/login' exact component={LogIn}/>
-        </div>
+          <div className="page">
+            <Header />
+            <Route path='/' exact component={HomePage} />
+            <Route path='/signup' exact component={SignUp}/>
+            <Route path='/user' exact component={UsersPage}/>
+            <Route path='/login' exact component={LogIn}/>
+          </div>
         </BrowserRouter>
       </Provider>
     )
