@@ -6,7 +6,6 @@ import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
 
 import Header from './components/Header';
-import SignUp from './components/auth/SignUp';
 import LogIn from './components/auth/LogIn';
 import store from './store';
 import './App.css';
@@ -19,7 +18,7 @@ class App extends Component {
           <div className="page">
             <Header />
             <Route path='/' exact component={HomePage} />
-            <Route path='/signup' exact component={SignUp}/>
+            <Route path='/signup' exact component={LogIn}/>
             <Route path='/user' exact component={UsersPage}/>
             <Route path='/login' exact component={LogIn}/>
           </div>

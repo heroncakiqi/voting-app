@@ -1,39 +1,74 @@
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form';
-import * as actions from '../../actions';
+import { login, signup, removeError } from '../../actions';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 
 class LogIn extends Component {
-  handleSubmit = (formProps) => {
-    this.props.login(formProps, () => {
-      this.props.history.push('/user');
-    });
+  state = {
+    email: "",
+    password: "",
+    disabled: false,
+    isLogin: this.props.match.path === "/login",
+  }
+  componentWillUnmount() {
+    this.props.removeError()
+  }
+  handleChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  } 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const formProps = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    this.setState({disabled: true})
+    if(this.state.isLogin) {
+      await this.props.login(formProps, () => {
+        this.props.history.push('/user');
+      });
+    } else {
+      await this.props.signup(formProps, () => {
+        this.props.history.push('/user');
+      });
+    }
+    this.setState({disabled: false})
   }
   render() {
+    const {email, password, disabled, isLogin} = this.state
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+        <form onSubmit={this.handleSubmit}>
         <fieldset>
           <label>Email:</label>
-          <Field
+          <input
             name='email'
             type='text'
-            component='input'
             required
-            disabled={this.props.disabled}
+            disabled={disabled}
+            value={email}
+            onChange={this.handleChange}
           />
-          <span>{this.props.errorMessage && this.props.errorMessage.email}</span>
+          <span style={{color: "red"}}>
+            {this.props.errorMessage && this.props.errorMessage.email}
+          </span>
           <label>Password:</label>
-          <Field
+          <input
             name='password'
             type='password'
-            component='input'
             required
-            disabled={this.props.disabled}
+            disabled={disabled}
+            value={password}
+            onChange={this.handleChange}
           />
-          <span>{this.props.errorMessage && this.props.errorMessage.password}</span>
-          <button disabled={this.props.disabled}>Log In!</button>
+          <span style={{color: "red"}}>
+            {this.props.errorMessage && this.props.errorMessage.password}
+          </span>
+          <button 
+            className="submit-button" 
+            disabled={disabled}
+          >
+            {isLogin ? "Log In!" : "Sign Up!"}
+          </button>
         </fieldset>
         </form>
       </div>
@@ -44,8 +79,7 @@ class LogIn extends Component {
 const mapStateToProps = (state) => {
   return {
     errorMessage: state.auth.errorMessage,
-    loading: state.loading.formLoading
   }
 }
 
-export default compose(connect(mapStateToProps, actions), reduxForm({ form: 'login '}))(LogIn);
+export default connect(mapStateToProps, {login, signup, removeError})(LogIn);

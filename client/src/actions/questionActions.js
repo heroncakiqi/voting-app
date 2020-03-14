@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {reset} from 'redux-form';
 
 import store from '../store';
 
@@ -41,14 +40,15 @@ export const fetchData = (token) => async dispatch => {
         payload: data
       });
     }
-    dispatch({
-      type: TOOGLE_LOADING,
-      payload: { questionsLoading: false }
-    })
   } catch(err){
     dispatch({
       type: DATA_FETCH_ERROR,
       payload: 'Oops something went wrong loading the page! :('
+    })
+  } finally {
+    dispatch({
+      type: TOOGLE_LOADING,
+      payload: { questionsLoading: false }
     })
   }
 }
@@ -97,11 +97,12 @@ export const vote = (questionId, optionId) => async dispatch => {
     } else {
       console.log(err)
     }
+  } finally {
+    dispatch({
+      type: TOOGLE_LOADING,
+      payload: { voatingLoading: false }
+    })
   }
-  dispatch({
-    type: TOOGLE_LOADING,
-    payload: { voatingLoading: false }
-  })
 }
 
 export const addQuestion = (formProps, cb) => async dispatch => {
@@ -135,7 +136,6 @@ export const addQuestion = (formProps, cb) => async dispatch => {
     type: TOOGLE_LOADING,
     payload: { addingQuestionLoading: false }
   })
-  dispatch(reset('newQuestion'))
 }
 
 

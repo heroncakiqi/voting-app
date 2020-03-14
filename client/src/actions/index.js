@@ -58,11 +58,12 @@ export const login = (formProps, callback) => async dispatch => {
        type: AUTH_ERROR,
        payload: { password : err.response.data.error  }
      });
+   } finally {
+      dispatch({
+        type: TOOGLE_LOADING,
+        formLoading: false
+      })
    }
-   dispatch({
-    type: TOOGLE_LOADING,
-    formLoading: false
-  })
 }
 
 export const removeError = () => {

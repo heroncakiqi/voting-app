@@ -18,7 +18,7 @@ class UsersPage extends Component {
       <div className="list-container">
         <CreateQuestion />
         {loading ? <div id="loader"><Loader type="Plane"/></div> : 
-          <QuestionList data={data} isDelete={auth.authenticated} />
+          <QuestionList data={data} isDelete={!!auth.authenticated} />
         }
       </div>
     )

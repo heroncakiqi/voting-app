@@ -161,3 +161,7 @@ button {
   background:transparent;
   border: none
 }
+
+.submit-button {
+  margin: 10px 0;
+}
