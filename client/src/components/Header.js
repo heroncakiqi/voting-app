@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import {logout} from '../actions/index';
 
 class Header extends Component {
+  handleLogout = () => {
+    this.props.logout();
+  }
   render() {
     const { isAuth } = this.props;
     return (
@@ -18,7 +22,7 @@ class Header extends Component {
               <Link to='/signup'>Sign Up 📋</Link>
             </div>
             : 
-            <Link to='logout'>Log out 👋</Link>
+            <a onClick={this.handleLogout}>Log out 👋</a>
           } 
       </div>
     )
@@ -31,4 +35,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, {logout})(Header)

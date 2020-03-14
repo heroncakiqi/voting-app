@@ -22,11 +22,12 @@ export const signup = (formProps, callback) => async dispatch => {
        type: AUTH_ERROR,
        payload: err.response.data
      });
+   } finally {
+      dispatch({
+        type: TOOGLE_LOADING,
+        formLoading: false
+      })
    }
-   dispatch({
-    type: TOOGLE_LOADING,
-    formLoading: false
-  })
 }
 
 export const logout = () => {
