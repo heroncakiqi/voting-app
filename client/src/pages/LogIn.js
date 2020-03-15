@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { login, signup, removeError } from '../../actions';
+import { login, signup, removeError } from '../actions';
 import { connect } from 'react-redux';
 
 class LogIn extends Component {

@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage'
 import UsersPage from './pages/UsersPage'
 
 import Header from './components/Header';
-import LogIn from './components/auth/LogIn';
+import LogIn from './pages/LogIn';
 import store from './store';
 import './App.css';
 
